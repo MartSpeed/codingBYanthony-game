@@ -27,12 +27,13 @@ let frameX = 0;
 let frameY = 0;
 let gameFrame = 0;
 // slowdown the frame by this amount
-const staggerFrames = 10
+const staggerFrames = 0
 
 //
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  // ctx.fillRect(100, 50, 100, 100);
+
+  let position = Math.floor(gameFrame/staggerFrames) % 6
   // draw image accepts 9 arguments
   // source 
   // the first 4 determine the area to cut out for the source image
@@ -40,14 +41,6 @@ function animate() {
   // source image, source-image x-coordinates, source-image y-coordinates, source-image width, source-image height, destination x-coordinates, destination y-coordinates, destination width, destination height
   // ctx.drawImage(playerImage, sx, sy, sw, sh, dx, dy, dw, dh)
   ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
-  if(gameFrame % staggerFrames == 0){
-    //
-    if(frameX < 6){
-      frameX++
-    }else{
-      frameX = 0
-    }
-  }
 
   gameFrame++
   requestAnimationFrame(animate);
