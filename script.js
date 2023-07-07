@@ -10,30 +10,90 @@ const ctx = canvas.getContext('2d');
 const CANVAS_WIDTH = (canvas.width = 600);
 const CANVAS_HEIGHT = (canvas.height = 600);
 
+
 /**
  * DESCRIPTION: SPRITE ANIMATION
  * there are 2 ways that you can pre make sprites
- */
+*/
 
 /**
  * DESCRIPTION: IMAGE ANIMATION
  * to bring image into
- */
+*/
 const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
 const spriteWidth = (6876/12)
 const spriteHeight = (5230/10)
 let frameX = 0;
-let frameY = 0;
+let frameY = 1;
 let gameFrame = 0;
+
 // slowdown the frame by this amount
 const staggerFrames = 5
 
+// main container for all player animations
+const spriteAnimations = []
+// 
+const animationStates = [
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'jump',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+  {
+    name: 'idle',
+    frames: 7
+  },
+]
+//
+animationStates.forEach((state, index) => {
+  let frames = {
+    loc: []
+  }
+  for(let j = 0; j < state.frames; j++){
+    let positionX = j * spriteWidth;
+    let positionY = j * spriteHeight;
+    frames.loc.push({x: positionX, y: positionY})
+  }
+  spriteAnimations[state.name] = frames;
+})
+console.log(spriteAnimations)
 //
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  let position = Math.floor(gameFrame/staggerFrames) % 6
+  let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations['idle'].loc.length
   frameX = spriteWidth * position
   // draw image accepts 9 arguments
   // source 
