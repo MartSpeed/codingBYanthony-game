@@ -34,7 +34,7 @@ function animate() {
   // the second 4 determine the destination where to draw the cropped out part to
   // source image, source-image x-coordinates, source-image y-coordinates, source-image width, source-image height, destination x-coordinates, destination y-coordinates, destination width, destination height
   // ctx.drawImage(playerImage, sx, sy, sw, sh, dx, dy, dw, dh)
-  ctx.drawImage(playerImage, 0, 0, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+  ctx.drawImage(playerImage, 3 * spriteWidth, 0 * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
   requestAnimationFrame(animate);
 }
 animate();
