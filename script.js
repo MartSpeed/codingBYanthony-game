@@ -21,6 +21,8 @@ const CANVAS_HEIGHT = (canvas.height = 600);
  */
 const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
+const spriteWidth = (6876/12)
+const spriteHeight = (5230/10)
 
 //
 function animate() {
@@ -32,7 +34,7 @@ function animate() {
   // the second 4 determine the destination where to draw the cropped out part to
   // source image, source-image x-coordinates, source-image y-coordinates, source-image width, source-image height, destination x-coordinates, destination y-coordinates, destination width, destination height
   // ctx.drawImage(playerImage, sx, sy, sw, sh, dx, dy, dw, dh)
-  ctx.drawImage(playerImage, sx, sy, sw, sh, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+  ctx.drawImage(playerImage, 0, 0, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
   requestAnimationFrame(animate);
 }
 animate();
