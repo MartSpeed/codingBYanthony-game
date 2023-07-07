@@ -25,7 +25,10 @@ playerImage.src = 'shadow_dog.png';
 //
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillRect(100, 50, 100, 100);
+  // ctx.fillRect(100, 50, 100, 100);
+  // draw image accepts 5 arguments
+  // playerImage variable, x coordinates, y coordinates, width, height
+  ctx.drawImage(playerImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
   requestAnimationFrame(animate);
 }
 animate();
