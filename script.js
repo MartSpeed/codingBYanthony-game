@@ -1,3 +1,8 @@
+let playerState = 'run'
+const dropdown = document.getElementById('animations')
+dropdown.addEventListener('change', function(e){
+  playerState = e.target.value;
+})
 //
 const canvas = document.getElementById('canvas1');
 
@@ -24,7 +29,6 @@ const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
 const spriteWidth = 575
 const spriteHeight = 523
-let playerState = 'run'
 let gameFrame = 0;
 
 // slowdown the frame by this amount
