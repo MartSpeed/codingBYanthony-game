@@ -22,12 +22,13 @@ const CANVAS_HEIGHT = (canvas.height = 600);
 */
 const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
-const spriteWidth = (6876/12)
-const spriteHeight = (5230/10)
+const spriteWidth = 575
+const spriteHeight = 523
+let playerState = 'run'
 let gameFrame = 0;
 
 // slowdown the frame by this amount
-const staggerFrames = 5
+const staggerFrames = 10
 
 // main container for all player animations
 const spriteAnimations = []
@@ -43,7 +44,7 @@ const animationStates = [
   },
   {
     name: 'fall',
-    frames: 9
+    frames: 7
   },
   {
     name: 'run',
@@ -91,9 +92,9 @@ console.log(spriteAnimations)
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations['jump'].loc.length
+  let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length
   let frameX = spriteWidth * position
-  let frameY = spriteAnimations['jump'].loc[position].y
+  let frameY = spriteAnimations[playerState].loc[position].y
   // draw image accepts 9 arguments
   // source 
   // the first 4 determine the area to cut out for the source image
