@@ -20,12 +20,16 @@ backgroundLayer4.src = 'layer-4.png';
 const backgroundLayer5 = new Image();
 backgroundLayer5.src = 'layer-5.png';
 
-//
+// setting background scroll speed
+let x = 0;
+
 function animate() {
-  ctx.drawImage(backgroundLayer5, 0, 0);
+  //
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.drawImage(backgroundLayer4, x, 0);
+  if (x < -2400) {
+    x = 2400;
+  } else x -= gameSpeed;
   requestAnimationFrame(animate);
 }
 animate();
-
-// 51:18 is where you stopped on the video
-//testing the git addition

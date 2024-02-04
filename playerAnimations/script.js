@@ -1,8 +1,8 @@
-let playerState = 'run'
-const dropdown = document.getElementById('animations')
-dropdown.addEventListener('change', function(e){
+let playerState = 'run';
+const dropdown = document.getElementById('animations');
+dropdown.addEventListener('change', function (e) {
   playerState = e.target.value;
-})
+});
 //
 const canvas = document.getElementById('canvas1');
 
@@ -15,99 +15,110 @@ const ctx = canvas.getContext('2d');
 const CANVAS_WIDTH = (canvas.width = 600);
 const CANVAS_HEIGHT = (canvas.height = 600);
 
-
 /**
- * DESCRIPTION: SPRITE ANIMATION
+ * DESCRIPTION: SPRITE ANIMATION b
  * there are 2 ways that you can pre make sprites
-*/
+ */
 
 /**
  * DESCRIPTION: IMAGE ANIMATION
  * to bring image into
-*/
+ */
 const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
-const spriteWidth = 575
-const spriteHeight = 523
+const spriteWidth = 575;
+const spriteHeight = 523;
 let gameFrame = 0;
 
 // slowdown the frame by this amount
-const staggerFrames = 10
+const staggerFrames = 10;
 
 // main container for all player animations
-const spriteAnimations = []
-// 
+const spriteAnimations = [];
+//
 const animationStates = [
   {
     name: 'idle',
-    frames: 7
+    frames: 7,
   },
   {
     name: 'jump',
-    frames: 7
+    frames: 7,
   },
   {
     name: 'fall',
-    frames: 7
+    frames: 7,
   },
   {
     name: 'run',
-    frames: 9
+    frames: 9,
   },
   {
     name: 'dizzy',
-    frames: 11
+    frames: 11,
   },
   {
     name: 'sit',
-    frames: 5
+    frames: 5,
   },
   {
     name: 'roll',
-    frames: 7
+    frames: 7,
   },
   {
     name: 'bite',
-    frames: 7
+    frames: 7,
   },
   {
     name: 'ko',
-    frames: 12
+    frames: 12,
   },
   {
     name: 'getHit',
-    frames: 4
+    frames: 4,
   },
-]
+];
 //
 animationStates.forEach((state, index) => {
   let frames = {
-    loc: []
-  }
-  for(let j = 0; j < state.frames; j++){
+    loc: [],
+  };
+  for (let j = 0; j < state.frames; j++) {
     let positionX = j * spriteWidth;
     let positionY = index * spriteHeight;
-    frames.loc.push({x: positionX, y: positionY})
+    frames.loc.push({ x: positionX, y: positionY });
   }
   spriteAnimations[state.name] = frames;
-})
-console.log(spriteAnimations)
+});
+console.log(spriteAnimations);
 //
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length
-  let frameX = spriteWidth * position
-  let frameY = spriteAnimations[playerState].loc[position].y
+  let position =
+    Math.floor(gameFrame / staggerFrames) %
+    spriteAnimations[playerState].loc.length;
+  let frameX = spriteWidth * position;
+  let frameY = spriteAnimations[playerState].loc[position].y;
   // draw image accepts 9 arguments
-  // source 
+  // source
   // the first 4 determine the area to cut out for the source image
   // the second 4 determine the destination where to draw the cropped out part to
   // source image, source-image x-coordinates, source-image y-coordinates, source-image width, source-image height, destination x-coordinates, destination y-coordinates, destination width, destination height
   // ctx.drawImage(playerImage, sx, sy, sw, sh, dx, dy, dw, dh)
-  ctx.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+  ctx.drawImage(
+    playerImage,
+    frameX,
+    frameY,
+    spriteWidth,
+    spriteHeight,
+    0,
+    0,
+    spriteWidth,
+    spriteHeight
+  );
 
-  gameFrame++
+  gameFrame++;
   requestAnimationFrame(animate);
 }
 animate();
