@@ -35,6 +35,20 @@ class Layer {
     this.speed = gameSpeed * this.speedModifier;
   }
   // move layers horizontally by changing their x and y properties
+  update() {
+    this.gameSpeed = gameSpeed * this.speedModifier;
+    if (this.x <= -this.width) {
+      this.x = this.width + this.x2 - this.speed;
+    }
+    if (this.x2 <= -this.width) {
+      this.x2 = this.width + this.x - this.speed;
+    }
+    // stopping at 1:07:42
+    this.x = Math.floor(this.x - this.speed);
+    this.x2 = Math.floor(this.x2 - this.speed);
+  }
+  // draw the images to my canvas object selector
+  draw() {}
 }
 
 function animate() {
