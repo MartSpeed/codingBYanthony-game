@@ -23,6 +23,19 @@ const backgroundLayer5 = new Image();
 backgroundLayer5.src = 'layer-5.png';
 
 // creating a class to make the layers for the level
+class Layer {
+  constructor(image, speedModifier) {
+    this.x = 0;
+    this.y = 0;
+    this.width = 2400;
+    this.height = 700;
+    this.x2 = this.width;
+    this.image = image;
+    this.speedModifier = speedModifier;
+    this.speed = gameSpeed * this.speedModifier;
+  }
+  // move layers horizontally by changing their x and y properties
+}
 
 function animate() {
   //
