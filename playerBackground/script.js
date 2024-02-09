@@ -22,6 +22,11 @@ backgroundLayer4.src = 'layer-4.png';
 const backgroundLayer5 = new Image();
 backgroundLayer5.src = 'layer-5.png';
 
+//slider
+const slider = document.getElementById('slider');
+slider.value = gameSpeed;
+const show_game_speed = document.getElementById('show_game_speed');
+show_game_speed.innerHTML = gameSpeed;
 // creating a class to make the layers for the level
 class Layer {
   constructor(image, speedModifier) {
