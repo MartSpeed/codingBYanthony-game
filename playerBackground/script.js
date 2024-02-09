@@ -53,9 +53,15 @@ class Layer {
   }
 }
 
+const layer4 = new Layer(backgroundLayer4, 0.5);
+
 function animate() {
   //
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  // update layer
+  layer4.update();
+  // draw layer
+  layer4.draw();
   requestAnimationFrame(animate);
 }
 animate();
