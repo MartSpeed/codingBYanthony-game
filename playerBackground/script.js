@@ -8,7 +8,7 @@ const CANVAS_WIDTH = (canvas.width = 800);
 const CANVAS_HEIGHT = (canvas.height = 700);
 
 // scrolling speed controller
-let gameSpeed = 15;
+let gameSpeed = 5;
 
 // bring image into the canvas object
 const backgroundLayer1 = new Image();
