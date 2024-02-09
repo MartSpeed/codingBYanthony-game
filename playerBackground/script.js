@@ -25,12 +25,11 @@ backgroundLayer5.src = 'layer-5.png';
 //slider
 const slider = document.getElementById('slider');
 slider.value = gameSpeed;
-const show_game_speed = document.getElementById('show_game_speed');
-show_game_speed.innerHTML = gameSpeed;
+const showGameSpeed = document.getElementById('showGameSpeed');
+showGameSpeed.innerHTML = gameSpeed;
 slider.addEventListener('change', function (e) {
   gameSpeed = e.target.value;
-  console.log(e.target.value);
-  show_game_speed.innerHTML = e.target.value;
+  showGameSpeed.innerHTML = e.target.value;
 });
 
 // creating a class to make the layers for the level
