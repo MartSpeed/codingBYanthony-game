@@ -9,7 +9,7 @@ const CANVAS_HEIGHT = (canvas.height = 700);
 
 // scrolling speed controller
 let gameSpeed = 5;
-let gameFrame = 0;
+// let gameFrame = 0;
 
 // bring image into the canvas object
 const backgroundLayer1 = new Image();
@@ -49,10 +49,11 @@ class Layer {
   // move layers horizontally by changing their x and y properties
   update() {
     this.speed = gameSpeed * this.speedModifier;
-    // if (this.x <= -this.width) {
-    //   this.x = 0;
-    // }
-    this.x = (gameFrame * this.speed) % this.width;
+    if (this.x <= -this.width) {
+      this.x = 0;
+    }
+    this.x = this.x - this.speed;
+    // this.x = (gameFrame * this.speed) % this.width;
   }
   // draw the images to my canvas object selector
   draw() {
@@ -82,7 +83,7 @@ function animate() {
     object.update();
     object.draw();
   });
-  gameFrame--;
+  // gameFrame--;
   requestAnimationFrame(animate);
 }
 animate();
